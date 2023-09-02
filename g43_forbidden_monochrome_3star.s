@@ -90,10 +90,11 @@ ideal I =
   w0122*w2320 + w0222*w1320 + w0320*w1222,
   w0122*w2321 + w0222*w1321 + w0321*w1222,
   w0122*w2322 + w0222*w1322 + w0322*w1222 - 1;
-option(redSB);
-option(prot);
-ideal subI = ideal(w1212);
-matrix T; // ?? not sure why it needs this extra matrix
+//option(redSB);
+//option(prot); // show progress/debug output
+ideal subI = ideal(w0322*w1322*w2322);
+matrix T;
 matrix T2 = lift(I, subI, T, "slimgb");
-T;
 T2;
+// verify lift
+matrix(I)*T2;
