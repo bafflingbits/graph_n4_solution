@@ -1,0 +1,13 @@
+diff --git a/kernel/GBEngine/tgb.cc b/kernel/GBEngine/tgb.cc
+index 25828f8d5..99eda4c05 100644
+--- a/kernel/GBEngine/tgb.cc
++++ b/kernel/GBEngine/tgb.cc
+@@ -33,7 +33,7 @@
+ 
+ #define BUCKETS_FOR_NORO_RED 1
+ #define SR_HDL(A) ((long)(A))
+-static const int bundle_size = 100;
++static const int bundle_size = 10000;
+ static const int bundle_size_noro = 10000;
+ static const int delay_factor = 3;
+ #define ADD_LATER_SIZE 500

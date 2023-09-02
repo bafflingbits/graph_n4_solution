@@ -1,0 +1,129 @@
+diff --git a/kernel/GBEngine/tgb.cc b/kernel/GBEngine/tgb.cc
+index e3a1f3510..33ad7684a 100644
+--- a/kernel/GBEngine/tgb.cc
++++ b/kernel/GBEngine/tgb.cc
+@@ -3625,6 +3625,12 @@ ideal t_rep_gb (const ring r, ideal arg_I, int syz_comp, BOOLEAN F4_mode)
+   return result;
+ }
+ 
++// There are so many function prototypes to change to pass this down.
++// For testing at the moment, just shove it in a global.
++
++extern ideal global_param_subIdeal;
++
++
+ ideal
+ do_t_rep_gb (ring /*r*/, ideal arg_I, int syz_comp, BOOLEAN F4_mode, int deg_pos)
+ {
+@@ -3650,6 +3656,16 @@ do_t_rep_gb (ring /*r*/, ideal arg_I, int syz_comp, BOOLEAN F4_mode, int deg_pos
+ 
+   qsort (I->m, IDELEMS (I), sizeof (poly), poly_crit);
+   //Print("Idelems %i \n----------\n",IDELEMS(I));
++
++  ideal subI = nullptr;
++  int lastIdx = -1;
++  if (global_param_subIdeal)
++  {
++    subI = idCopy(global_param_subIdeal);
++    lastIdx = IDELEMS(subI) - 1;
++    subI->rank = I->rank;
++  }
++
+   //slimgb_alg* c=(slimgb_alg*) omalloc(sizeof(slimgb_alg));
+   //int syz_comp=arg_I->rank;
+   slimgb_alg *c = new slimgb_alg (I, syz_comp, F4_mode, deg_pos);
+@@ -3664,7 +3680,42 @@ do_t_rep_gb (ring /*r*/, ideal arg_I, int syz_comp, BOOLEAN F4_mode, int deg_pos
+     else
+ #endif
+       go_on (c);
++
++    // if lifting, check if we are done
++    //   do polynomials in subIdeal reduce to "0" ?
++    //   ... where "0" is a value with only syz_comp tracking
++    if (lastIdx >= 0)
++    {
++      // temp change size of c->S, as we only want to consider first c->n
++      size_t org_ncols = c->S->ncols;
++      c->S->ncols = c->n;
++      ideal curBasis = c->S;
++
++      while (lastIdx >= 0) {
++        poly out = kNF(curBasis, currRing->qideal, subI->m[lastIdx],
++                       c->syz_comp, KSTD_NF_LAZY);
++        if (!out || p_GetComp(out, currRing) > c->syz_comp)
++        {
++          pDelete(&out);
++          --lastIdx;
++          if (lastIdx<0)
++          {
++            // we can lift now, mark for early exit
++            c->pair_top = -1;
++          }
++        }
++        else
++        {
++          pDelete(&out);
++          break;
++        }
++      }
++      // restore c->S to original size
++      c->S->ncols = org_ncols;
++    }
+   }
++  idDelete(&subI);
++
+   if(c->pair_top < 0)
+     c->completed = TRUE;
+   I = c->S;
+diff --git a/kernel/ideals.cc b/kernel/ideals.cc
+index a810f8af3..7d69cd874 100644
+--- a/kernel/ideals.cc
++++ b/kernel/ideals.cc
+@@ -1091,6 +1091,12 @@ static void idLift_setUnit(int e_mod, matrix *unit)
+     }
+   }
+ }
++
++// There are so many function prototypes to change to pass this down.
++// For testing at the moment, just shove it in a global.
++
++ideal global_param_subIdeal = nullptr;
++
+ /*2
+ *computes a representation of the generators of submod with respect to those
+ * of mod
+@@ -1161,8 +1167,14 @@ ideal idLift(ideal mod, ideal submod,ideal *rest, BOOLEAN goodShape,
+     s_mod = mod;
+     s_temp = idCopy(submod);
+   }
++  if (lsmod==0)
++  {
++    id_Shift(s_temp,1,currRing);
++  }
++
+   BITSET save2;
+   SI_SAVE_OPT2(save2);
++  global_param_subIdeal = s_temp;
+ 
+   if ((rest==NULL)
+   && (!rField_is_Ring(currRing))
+@@ -1181,6 +1193,8 @@ ideal idLift(ideal mod, ideal submod,ideal *rest, BOOLEAN goodShape,
+   {
+     s_h3 = idPrepare(s_mod,NULL,(tHomog)FALSE,k+comps_to_add,NULL,alg);
+   }
++
++  global_param_subIdeal = nullptr;
+   SI_RESTORE_OPT2(save2);
+ 
+   if (!goodShape)
+@@ -1192,10 +1206,6 @@ ideal idLift(ideal mod, ideal submod,ideal *rest, BOOLEAN goodShape,
+     }
+   }
+   idSkipZeroes(s_h3);
+-  if (lsmod==0)
+-  {
+-    id_Shift(s_temp,1,currRing);
+-  }
+   if (unit!=NULL)
+   {
+     for(j = 0;j<comps_to_add;j++)

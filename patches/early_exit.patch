@@ -1,0 +1,55 @@
+diff --git a/kernel/GBEngine/tgb.cc b/kernel/GBEngine/tgb.cc
+index e3a1f3510..7676f8aae 100644
+--- a/kernel/GBEngine/tgb.cc
++++ b/kernel/GBEngine/tgb.cc
+@@ -2711,6 +2711,7 @@ void noro_step (poly * p, int &pn, slimgb_alg * c)
+ #endif
+ static void go_on (slimgb_alg * c)
+ {
++  BOOLEAN detected_groebner_constant = FALSE;
+   //set limit of 1000 for multireductions, at the moment for
+   //programming reasons
+ #ifdef USE_NORO
+@@ -2821,6 +2822,12 @@ static void go_on (slimgb_alg * c)
+ 
+     p[i] = h;
+     i++;
++
++    if(c->pTotaldegree(h) == 0)
++    {
++      detected_groebner_constant = TRUE;
++      break;
++    }
+   }
+   p[i] = NULL;
+ //  pre_comp(p,i,c);
+@@ -2976,15 +2983,28 @@ static void go_on (slimgb_alg * c)
+       else
+       {
+         add_those[num_to_add++] = p;
++
++        if (c->pTotaldegree(p) == 0)
++        {
++          detected_groebner_constant = TRUE;
++          // unsure of memory management requirements, so continue loop
++        }
+       }
+     }
+ 
+     //sbuf[j]=add_to_basis(p,-1,-1,c,ibuf+j);
+   }
+-  mass_add (add_those, num_to_add, c);
++  mass_add (add_those, num_to_add, c);  // this updates c->pair_top
+   omfree (add_those);
+   omFree (buf);
+ 
++  if (detected_groebner_constant)
++  {
++    // this will exit processing loop
++    c->pair_top = -1;
++    // ?? does this break some memory management
++  }
++
+   if(TEST_OPT_PROT)
+     Print ("(%d)", c->pair_top + 1);
+   //TODO: implement that while(!(idIs0(c->add_later)))

@@ -1,0 +1,55 @@
+diff --git a/kernel/GBEngine/tgb.cc b/kernel/GBEngine/tgb.cc
+index e3a1f3510..416f6d0c6 100644
+--- a/kernel/GBEngine/tgb.cc
++++ b/kernel/GBEngine/tgb.cc
+@@ -2748,9 +2748,13 @@ static void go_on (slimgb_alg * c)
+       if(s->deg > curr_deg)
+         break;
+     }
+-
+     else
++    {
+       curr_deg = s->deg;
++      // this appears to never be used, but is convenient for debug printing
++      // so update it here
++      c->current_degree = curr_deg;
++    }
+     quick_pop_pair (c);
+     if(s->i >= 0)
+     {
+@@ -2897,7 +2901,7 @@ static void go_on (slimgb_alg * c)
+ //    Print("\ncurr_deg:%i\n",curr_deg);
+   if(TEST_OPT_PROT)
+   {
+-    Print ("%dM[%d,", curr_deg, i);
++    Print ("%dM[%d:%d,", curr_deg, i, c->remainingCurrentDegree());
+   }
+ 
+   multi_reduction (buf, i, c);
+diff --git a/kernel/GBEngine/tgb_internal.h b/kernel/GBEngine/tgb_internal.h
+index 6c70d0a59..76b9d1804 100644
+--- a/kernel/GBEngine/tgb_internal.h
++++ b/kernel/GBEngine/tgb_internal.h
+@@ -287,6 +287,13 @@ class slimgb_alg
+     }
+     return rr;
+   }
++  int remainingCurrentDegree(void) {
++    int count = 0;
++    for (int i = pair_top; i>0 && apairs[i]->deg == current_degree; --i) {
++      ++count;
++    }
++    return count;
++  }
+ };
+ class red_object
+ {
+@@ -1863,7 +1870,7 @@ template <class number_type> void noro_step(poly*p,int &pn,slimgb_alg* c)
+   int j;
+   if (TEST_OPT_PROT)
+   {
+-    Print("Input rows %d\n",pn);
++    Print("Input rows %d : deg=%d, remaining=%d\n", pn, c->current_degree, c->remainingCurrentDegree());
+   }
+ 
+   NoroCache<number_type> cache;
