@@ -1,0 +1,55 @@
++ ./Singular/Singular/Singular -q -e 2>&1 < "g42_forbidden_multicolor_3star.s"
+/home/ubuntu/data/g2/Singular/Singular/.libs/../LIB/.singularrc   1> system("--allow-net", 1);
+STDIN   1> // n=4 c=2
+STDIN   2. // total variables: 24
+STDIN   3. // total constraints: 16
+STDIN   4. ring R = QQ[
+STDIN   5.     w0100, w0101, w0110, w0111,
+STDIN   6.     w0200, w0201, w0210, w0211,
+STDIN   7.     w0300, w0301, w0310, w0311,
+STDIN   8.     w1200, w1201, w1210, w1211,
+STDIN   9.     w1300, w1301, w1310, w1311,
+STDIN  10.     w2300, w2301, w2310, w2311];
+STDIN  11> ideal I =
+STDIN  12.   w0100*w2300 + w0200*w1300 + w0300*w1200 - 1,
+STDIN  13.   w0100*w2301 + w0200*w1301 + w0301*w1200,
+STDIN  14.   w0100*w2310 + w0201*w1300 + w0300*w1201,
+STDIN  15.   w0100*w2311 + w0201*w1301 + w0301*w1201,
+STDIN  16.   w0101*w2300 + w0200*w1310 + w0300*w1210,
+STDIN  17.   w0101*w2301 + w0200*w1311 + w0301*w1210,
+STDIN  18.   w0101*w2310 + w0201*w1310 + w0300*w1211,
+STDIN  19.   w0101*w2311 + w0201*w1311 + w0301*w1211,
+STDIN  20.   w0110*w2300 + w0210*w1300 + w0310*w1200,
+STDIN  21.   w0110*w2301 + w0210*w1301 + w0311*w1200,
+STDIN  22.   w0110*w2310 + w0211*w1300 + w0310*w1201,
+STDIN  23.   w0110*w2311 + w0211*w1301 + w0311*w1201,
+STDIN  24.   w0111*w2300 + w0210*w1310 + w0310*w1210,
+STDIN  25.   w0111*w2301 + w0210*w1311 + w0311*w1210,
+STDIN  26.   w0111*w2310 + w0211*w1310 + w0310*w1211,
+STDIN  27.   w0111*w2311 + w0211*w1311 + w0311*w1211 - 1;
+STDIN  28> //option(redSB);
+STDIN  29. //option(prot); // show progress/debug output
+STDIN  30. ideal subI = ideal(w0101*w0201*w0301);
+STDIN  31> matrix T;
+STDIN  32> matrix T2 = lift(I, subI, T, "slimgb");
+STDIN  33> T2;
+T2[1,1]=-w0101*w0201*w0301
+T2[2,1]=w0101*w0201*w0300
+T2[3,1]=w0101*w0200*w0301
+T2[4,1]=-w0101*w0200*w0300
+T2[5,1]=w0100*w0201*w0301
+T2[6,1]=-w0100*w0201*w0300
+T2[7,1]=-w0100*w0200*w0301
+T2[8,1]=w0100*w0200*w0300
+T2[9,1]=0
+T2[10,1]=0
+T2[11,1]=0
+T2[12,1]=0
+T2[13,1]=0
+T2[14,1]=0
+T2[15,1]=0
+T2[16,1]=0
+STDIN  34> // verify lift
+STDIN  35. matrix(I)*T2;
+_[1,1]=w0101*w0201*w0301
+max memory(KB):13948  time(sec):0.04 = 0:00.04
