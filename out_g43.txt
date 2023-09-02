@@ -1,0 +1,246 @@
++ ./Singular/Singular/Singular -q -e 2>&1 < "g43.s"
+STDIN   1> // n=4 c=3
+STDIN   2. // total variables: 54
+STDIN   3. // total constraints: 81
+STDIN   4. ring R = QQ[
+STDIN   5.     w0100, w0101, w0102, w0110, w0111, w0112, w0120, w0121, w0122,
+STDIN   6.     w0200, w0201, w0202, w0210, w0211, w0212, w0220, w0221, w0222,
+STDIN   7.     w0300, w0301, w0302, w0310, w0311, w0312, w0320, w0321, w0322,
+STDIN   8.     w1200, w1201, w1202, w1210, w1211, w1212, w1220, w1221, w1222,
+STDIN   9.     w1300, w1301, w1302, w1310, w1311, w1312, w1320, w1321, w1322,
+STDIN  10.     w2300, w2301, w2302, w2310, w2311, w2312, w2320, w2321, w2322];
+STDIN  11> ideal I =
+STDIN  12.   w0100*w2300 + w0200*w1300 + w0300*w1200 - 1,
+STDIN  13.   w0100*w2301 + w0200*w1301 + w0301*w1200,
+STDIN  14.   w0100*w2302 + w0200*w1302 + w0302*w1200,
+STDIN  15.   w0100*w2310 + w0201*w1300 + w0300*w1201,
+STDIN  16.   w0100*w2311 + w0201*w1301 + w0301*w1201,
+STDIN  17.   w0100*w2312 + w0201*w1302 + w0302*w1201,
+STDIN  18.   w0100*w2320 + w0202*w1300 + w0300*w1202,
+STDIN  19.   w0100*w2321 + w0202*w1301 + w0301*w1202,
+STDIN  20.   w0100*w2322 + w0202*w1302 + w0302*w1202,
+STDIN  21.   w0101*w2300 + w0200*w1310 + w0300*w1210,
+STDIN  22.   w0101*w2301 + w0200*w1311 + w0301*w1210,
+STDIN  23.   w0101*w2302 + w0200*w1312 + w0302*w1210,
+STDIN  24.   w0101*w2310 + w0201*w1310 + w0300*w1211,
+STDIN  25.   w0101*w2311 + w0201*w1311 + w0301*w1211,
+STDIN  26.   w0101*w2312 + w0201*w1312 + w0302*w1211,
+STDIN  27.   w0101*w2320 + w0202*w1310 + w0300*w1212,
+STDIN  28.   w0101*w2321 + w0202*w1311 + w0301*w1212,
+STDIN  29.   w0101*w2322 + w0202*w1312 + w0302*w1212,
+STDIN  30.   w0102*w2300 + w0200*w1320 + w0300*w1220,
+STDIN  31.   w0102*w2301 + w0200*w1321 + w0301*w1220,
+STDIN  32.   w0102*w2302 + w0200*w1322 + w0302*w1220,
+STDIN  33.   w0102*w2310 + w0201*w1320 + w0300*w1221,
+STDIN  34.   w0102*w2311 + w0201*w1321 + w0301*w1221,
+STDIN  35.   w0102*w2312 + w0201*w1322 + w0302*w1221,
+STDIN  36.   w0102*w2320 + w0202*w1320 + w0300*w1222,
+STDIN  37.   w0102*w2321 + w0202*w1321 + w0301*w1222,
+STDIN  38.   w0102*w2322 + w0202*w1322 + w0302*w1222,
+STDIN  39.   w0110*w2300 + w0210*w1300 + w0310*w1200,
+STDIN  40.   w0110*w2301 + w0210*w1301 + w0311*w1200,
+STDIN  41.   w0110*w2302 + w0210*w1302 + w0312*w1200,
+STDIN  42.   w0110*w2310 + w0211*w1300 + w0310*w1201,
+STDIN  43.   w0110*w2311 + w0211*w1301 + w0311*w1201,
+STDIN  44.   w0110*w2312 + w0211*w1302 + w0312*w1201,
+STDIN  45.   w0110*w2320 + w0212*w1300 + w0310*w1202,
+STDIN  46.   w0110*w2321 + w0212*w1301 + w0311*w1202,
+STDIN  47.   w0110*w2322 + w0212*w1302 + w0312*w1202,
+STDIN  48.   w0111*w2300 + w0210*w1310 + w0310*w1210,
+STDIN  49.   w0111*w2301 + w0210*w1311 + w0311*w1210,
+STDIN  50.   w0111*w2302 + w0210*w1312 + w0312*w1210,
+STDIN  51.   w0111*w2310 + w0211*w1310 + w0310*w1211,
+STDIN  52.   w0111*w2311 + w0211*w1311 + w0311*w1211 - 1,
+STDIN  53.   w0111*w2312 + w0211*w1312 + w0312*w1211,
+STDIN  54.   w0111*w2320 + w0212*w1310 + w0310*w1212,
+STDIN  55.   w0111*w2321 + w0212*w1311 + w0311*w1212,
+STDIN  56.   w0111*w2322 + w0212*w1312 + w0312*w1212,
+STDIN  57.   w0112*w2300 + w0210*w1320 + w0310*w1220,
+STDIN  58.   w0112*w2301 + w0210*w1321 + w0311*w1220,
+STDIN  59.   w0112*w2302 + w0210*w1322 + w0312*w1220,
+STDIN  60.   w0112*w2310 + w0211*w1320 + w0310*w1221,
+STDIN  61.   w0112*w2311 + w0211*w1321 + w0311*w1221,
+STDIN  62.   w0112*w2312 + w0211*w1322 + w0312*w1221,
+STDIN  63.   w0112*w2320 + w0212*w1320 + w0310*w1222,
+STDIN  64.   w0112*w2321 + w0212*w1321 + w0311*w1222,
+STDIN  65.   w0112*w2322 + w0212*w1322 + w0312*w1222,
+STDIN  66.   w0120*w2300 + w0220*w1300 + w0320*w1200,
+STDIN  67.   w0120*w2301 + w0220*w1301 + w0321*w1200,
+STDIN  68.   w0120*w2302 + w0220*w1302 + w0322*w1200,
+STDIN  69.   w0120*w2310 + w0221*w1300 + w0320*w1201,
+STDIN  70.   w0120*w2311 + w0221*w1301 + w0321*w1201,
+STDIN  71.   w0120*w2312 + w0221*w1302 + w0322*w1201,
+STDIN  72.   w0120*w2320 + w0222*w1300 + w0320*w1202,
+STDIN  73.   w0120*w2321 + w0222*w1301 + w0321*w1202,
+STDIN  74.   w0120*w2322 + w0222*w1302 + w0322*w1202,
+STDIN  75.   w0121*w2300 + w0220*w1310 + w0320*w1210,
+STDIN  76.   w0121*w2301 + w0220*w1311 + w0321*w1210,
+STDIN  77.   w0121*w2302 + w0220*w1312 + w0322*w1210,
+STDIN  78.   w0121*w2310 + w0221*w1310 + w0320*w1211,
+STDIN  79.   w0121*w2311 + w0221*w1311 + w0321*w1211,
+STDIN  80.   w0121*w2312 + w0221*w1312 + w0322*w1211,
+STDIN  81.   w0121*w2320 + w0222*w1310 + w0320*w1212,
+STDIN  82.   w0121*w2321 + w0222*w1311 + w0321*w1212,
+STDIN  83.   w0121*w2322 + w0222*w1312 + w0322*w1212,
+STDIN  84.   w0122*w2300 + w0220*w1320 + w0320*w1220,
+STDIN  85.   w0122*w2301 + w0220*w1321 + w0321*w1220,
+STDIN  86.   w0122*w2302 + w0220*w1322 + w0322*w1220,
+STDIN  87.   w0122*w2310 + w0221*w1320 + w0320*w1221,
+STDIN  88.   w0122*w2311 + w0221*w1321 + w0321*w1221,
+STDIN  89.   w0122*w2312 + w0221*w1322 + w0322*w1221,
+STDIN  90.   w0122*w2320 + w0222*w1320 + w0320*w1222,
+STDIN  91.   w0122*w2321 + w0222*w1321 + w0321*w1222,
+STDIN  92.   w0122*w2322 + w0222*w1322 + w0322*w1222 - 1;
+STDIN  93> option(redSB);
+STDIN  94> option(prot);
+STDIN  95> ideal I2 = slimgb(I);
+2M[80,80](648)3M[100,100](2061)3M[100,100](3833)3M[100,100](5768)3M[100,100](7465)3M[100,100](9490)3M[100,100](11436)3M[48,48](12558)4M[100,100](16143)4M[100,74](19655)4M[100,bb78](24730)4M[100,bb97](28400)4M[100,bb100](32116)4M[100,100](36030)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbb22](36949)4M[100,bbbbbbbbbb22](38348)4M[100,bb100](43891)4M[100,bbbbbbbbbbbbbbbbbbbb100](49037)4M[100,bbbbbbbbbbbbbbbbbbbbbbb71](52215)4M[100,bbbbbbbbbbbbbbb72](54411)4M[100,bbbb100](57770)4M[100,bbbbbbbbbbbbbbb100](61902)4M[100,bbbbbbbbbbbbbb88](65942)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb6](66245)4M[100,bbbbbbbbbbbbbbbbbbb6](66405)4M[100,bbbbbbbb36](67965)4M[100,bbbbbbbbbb100](74004)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb100](79575)4M[100,bbbbbbbbbbbbbbbb100](84289)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb57](86796)4M[100,44](88945)4M[100,bbbbbbbbbb64](91533)4M[100,bbbbbbbbbb49](93150)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbb94](96225)4M[100,bbbbb100](102401)4M[100,100](107551)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb8](108022)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb36](109740)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb31](111384)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb5](111487)4M[100,bbbbbbbbbbbbbbbbbbbbb69](116375)4M[100,b76](122888)4M[100,b100](127846)4M[100,bbb100](132656)4M[100,78](137151)4M[100,bbbbbbbbbbb0](137051)4M[100,bbbbbbbbbb36](138713)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbb7](138953)4M[100,bbbbbbbbbbbbbbbbb29](140169)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb36](141715)4M[100,bbbbbbbbbbbbbbbbbbbbbbbb21](143329)4M[100,bbbbbbb32](145610)4M[100,100](153716)4M[100,bbbbbb55](157625)4M[100,bbbbbbbb88](161323)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbb100](164727)4M[100,bbb100](169909)4M[100,bb8](170414)4M[100,21](171326)4M[100,b15](171960)4M[100,bbbbbb23](172814)4M[100,bbbb13](173282)4M[100,bbbbbbbbbbbbbbbbbbbb34](174509)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb8](175108)4M[100,bbbbbbbbbbbbbbbbbbb6](175382)4M[100,bbbbbbbbbb22](176634)4M[100,bbbb100](184203)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb82](189967)4M[100,36](192936)4M[100,bbb47](195933)4M[100,bbb64](199427)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb79](202569)4M[100,100](210869)4M[100,bbbb52](215072)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb4](215414)4M[100,bbbbbbbbbbbbbbbbbbbb32](217823)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb33](220591)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3](220692)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb36](223763)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb18](225389)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb18](226745)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb36](230212)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb38](234341)4M[100,53](239804)4M[100,bbbbbbb97](246479)4M[100,46](249643)4M[100,bbbbbbbbb0](249543)4M[100,bbbbbb36](251985)4M[100,bbbbbbbbbbbbb0](251885)4M[100,bbbbbbbbb36](254115)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbb0](254015)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbb36](256113)4M[100,bbbbbbbbbbbb16](257492)4M[100,bbbbbbbbb20](258939)4M[100,bbbbbbbbbbbbbbbbbbbbbb36](261890)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbb0](261790)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb42](265476)4M[100,bbbbbbbbbb21](267520)4M[100,bbbbbbbbb37](271331)4M[100,b70](277234)4M[100,bbbbbbbbbb46](279522)4M[100,bbb0](279422)4M[100,36](281888)4M[100,0](281788)4M[100,bbbbbbb31](283408)4M[100,bbbbbbbb5](283598)4M[100,bbbbbbbbbbbbbbbb15](284194)4M[100,bbbbbbbbbbb21](285063)4M[100,8](285848)4M[100,bbb28](287805)4M[100,bbbbbb10](288537)4M[100,bbbbbbbbbb26](290293)4M[100,bbbbbbbbbbbbbbbbbb21](291811)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb21](293513)4M[100,bbbbbbbbbbbbbbbbbbbbbb6](293868)4M[100,bbbbbbbbbbbbbb9](294498)4M[100,42](299186)4M[100,36](302534)4M[100,bbbbbbbbbb60](307194)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb70](310842)4M[32,bbbbbb32](312740)5M[100,100](321688)4M[100,96](339813)4M[62,62](351136)5M[100,93](363888)4M[32,32](368938)5M[100,100](376594)4M[60,58](385851)5M[100,bbe85](397507)4M[26,26](400975)5M[100,eeee85](410018)5M[100,eeeeeeeeee74](417956)5M[100,eeebbbbbbbeebb55](423673)5M[100,ebeeebb66](428979)5M[100,eeeeeeeeeeeeebebe68](435454)5M[100,eeeeeeeeebeebebe62](441329)5M[100,ebeebebe48](447517)5M[100,eeeeebeebe58](452964)5M[100,eeeee65](457013)5M[100,e88](465802)5M[100,eeeeb63](471005)5M[100,ee96](479282)5M[100,bbbbbbbbbbbbbbbbbbbb89](491897)4M[100,97](506132)4M[100,99](521722)4M[100,ee96](531353)4M[100,eebbb97](541870)4M[100,ebbbbbb96](554286)4M[22,21](558131)5M[100,eb94](570403)5M[100,b63](580599)5M[100,bbb92](594411)5M[100,bebb97](609039)5M[100,beeeebbee41](614725)5M[100,bebb82](624023)5M[100,eeebbbeeebbbe71](631903)4M[34,34](636010)5M[100,eeebeeebeebbbbbbbbbbe41](639680)5M[100,bbbbbbbb46](643006)4M[22,eeeeee22](644664)5M[100,eeebebbbbeeeeeeeeb68](649907)5M[100,bbbeeeeeeeeebeeeebbbb58](654439)5M[100,eeeeeeeeebebeebeebeeeebbbbe83](663346)5M[100,ebeebb87](671197)5M[100,eeeeeeeeeeeebbebeeebeeebb71](678449)4M[13,13](679867)5M[100,eeeeeeeeeeeeeeeeeeebeee52](687501)4M[42,42](694663)5M[100,beb96](708033)5M[100,eeeeeeeeebebbe70](716970)4M[100,eebbeeeeeeee99](727996)4M[7,7](728857)5M[100,eebbbbbbbb85](738472)4M[21,b19](740262)5M[100,bbbbbbbbeeebbbb62](748567)5M[100,bebbeeeb72](755781)5M[100,bbbbee58](762194)5M[100,eebbbbbbebbbeebbeeeeeee16](764018)5M[100,eeebebe44](768010)5M[100,eeeeebebbbeeeeeebebb74](777999)5M[100,eeebeeeb89](786182)4M[28,28](792983)5M[100,bbbbbe89](805543)4M[22,21](808081)5M[100,bebbbbbbbebbb79](818125)4M[100,ebbeeebbeee92](828857)4M[10,ebb9](830006)5M[100,bbbbbbb80](840557)4M[10,bbb10](841895)5M[100,ebbeeeebbbb80](853896)4M[15,15](856128)5M[100,eeeeeeeee69](863163)5M[100,eeeeeebbeebbebeeebbebbbb58](868730)5M[100,eebbbbbbeeeeebbeeeebbbeeeebbbbbeeebb43](871729)5M[100,beeeeeeeebeeeeb58](878528)5M[100,beeeee61](889669)4M[15,15](894036)5M[100,bbb91](908799)4M[14,b14](910586)5M[100,bbbbbbbe87](926313)4M[100,eebeeeeeeebebeee96](942878)4M[19,e19](944867)5M[100,bbebbebbbbbbbbbbbebbbbbbeeee74](956625)5M[100,bbbbeebeeeebbbb86](968766)4M[15,bbb15](970898)5M[100,bbbbeebebe87](982335)4M[82,beeeeeeebbeebbbeb79](991306)5M[100,eeeeeeeeeeeeeebbbbebbbbbb49](997396)4M[11,11](998645)5M[100,bbbbbbbbeebebeeebbbbeebeee74](1007746)4M[17,eee15](1009384)5M[100,beeebeebeeeeeebbeeeebbbbeeeeeebb63](1015026)5M[100,ebbeeeeebbeeebbbbeeeeeeeebeb89](1022539)5M[100,eeeeeeeeeeeebbee35](1027543)4M[9,bb9](1028413)5M[100,eebeeeeeeeebee72](1035186)5M[100,eeeeeeeeeeeeeeeeeeeeeeeeebb63](1041904)4M[28,bbe27](1045971)5M[100,eeeeebbebeebbeeeeeeeebeeeebbeeb69](1052020)4M[1,1](1052405)5M[100,eeeeeeeebbbbbebbebeeeeeeeeeeebbbebeebbbbb63](1061052)4M[100,eeebeeeeeeeeeeeeeeee85](1078885)4M[40,eb40](1082328)5M[100,eeee91](1097805)5M[100,bbbbbbbbbeeeeeeb91](1107833)5M[100,ebbbbbbbbebbebbbbbb83](1114404)5M[100,bbbbbbbbbbbbebbbebbbbebbbb87](1121468)5M[100,ebbbbbbeeebb81](1127746)5M[100,ebeeeeeebbebb86](1134025)5M[100,eeeeeeeeeeeeeeeeeeebbebbbbeeeeebbebbbbb52](1137733)5M[100,eeeeeeeeeeeeeeeeebbbeebb65](1143484)5M[100,eeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbee68](1152502)5M[100,eeeeeeeeeeeee55](1162337)4M[26,ee24](1167990)5M[100,eeeeeebeee42](1174979)5M[100,eeeeeeeebeeebeeeeeebee24](1178481)5M[100,eeeeeeeeeeebebbeeeeeebeeeeebeebb40](1183003)5M[100,eeeeeeeeeeee74](1188706)5M[100,eeeeebbeeebee79](1196314)4M[40,ebebeebe30](1198850)5M[100,beeeebeeeb68](1206412)5M[100,eeeebebbeeeeeeeeeebbbbbe70](1212841)4M[29,bbbbb27](1215380)5M[100,eeebeebeebeeeeeebeebbbbb61](1221526)4M[10,10](1223162)5M[100,eeeeee93](1230576)4M[22,ee22](1233084)5M[100,eeeebbbbebbbb90](1243173)5M[100,eeeeeeebbbbbebebbbbbb72](1248966)4M[2,2](1249247)5M[100,bbbbeeebbbbebbb91](1260790)4M[58,eeeeeeeebbbbeeeeebbbbbbbbbbb53](1266056)5M[100,bbbbbbbbbebbebbbbbbbbb85](1274337)4M[23,ebbe14](1277240)5M[100,bbbeeeeebbbeebbbebebbbbbb68](1282629)4M[31,bbbbb31](1284819)5M[100,eeeeebebbbebeb72](1293929)4M[28,bbbbbbb26](1295904)5M[100,bbbbbbbbbbbbbb89](1305413)5M[100,eeeeeebbbbeeebbbb81](1312892)5M[100,eebbbbbbbeeebeee75](1321391)5M[100,eeebbbbbbbeeeeebeee70](1326893)5M[100,ebeebebbbeeebbeeeeeeeeeeee65](1332165)5M[100,bbbbbbebeeebb80](1338572)4M[26,eeeeeeeeeb22](1341369)5M[100,ebbbbbbbbee89](1353272)4M[59,eebbbbbbbbbbbbeeeeebbb47](1358168)5M[100,bbbbbbbbebbbbebbbbbb84](1367350)4M[46,eeebb44](1373179)5M[100,beeeeeeebbb81](1385930)4M[55,55](1396568)5M[100,bbbbbbbbbbbeeeeeeeeee46](1406001)5M[100,bbbbbbbb98](1415953)5M[100,bbbbbbbbbbbbbbbbb81](1432954)5M[100,beee85](1441510)5M[100,bb98](1450625)4M[6,bbb6](1451066)5M[100,bbbbbbbbbbbbb91](1462288)4M[14,14](1463583)5M[100,b98](1472860)5M[100,bbbbeebbb87](1479957)4M[23,23](1481528)5M[100,bbbbbbbbb70](1488887)4M[17,17](1491698)5M[100,ebbbbbbbbbbbbbb65](1497478)4M[26,bbbbbbbb19](1500059)5M[100,bbebbbbbbbeebbeeebbbbb53](1505337)5M[100,bbbbbbeeeebbbbbeeeeebbbbbeebbbbbbeeeeeebeeb60](1510818)4M[100,bbeeebbbbbbbeeebbeeebbebbbbebeeeeeeeee81](1518288)4M[13,bbbeee13](1519368)5M[100,bbeeebbbbbbebbbbb65](1526782)4M[2,2](1526897)5M[100,beeeeeeeeebbbbeeebbb70](1532490)4M[6,eeee4](1533610)5M[100,ebbbbeeebbebebbbbbbbbbbb64](1540708)4M[16,bbbbbbbbbbb14](1541979)5M[100,eeebeeebbebbbeeeeeebeeeeeeeeebbeeebb35](1544513)5M[100,bebbbbbebbbbbbbbb69](1551074)4M[35,bbe35](1554033)5M[100,eeeeeeeeeeeeeee80](1561252)4M[2,2](1561450)5M[100,bbbb87](1570983)4M[68,eeeeeeeeeeebebeb61](1576528)5M[100,bbebbbbbeebbb78](1583430)4M[100,eebbbbbbbbeb96](1592533)4M[8,b8](1592942)5M[100,eeeebbeeeeeebbbbbeebeebb61](1600799)4M[47,44](1605401)5M[100,bbbebbbebbbbbb68](1614808)4M[36,bbbbbbb34](1618314)5M[100,bbbbbbbe90](1625138)5M[100,eebbbeebebbbbbbe46](1628247)4M[41,bbbbbbe41](1632130)5M[100,eeebbeeebeeeebebebbbeebbebbe55](1636885)4M[29,eeeeeebbbee27](1640193)5M[100,ebbeeeeeeeeebbb64](1644655)4M[44,eeeeeeeeee37](1647013)3M[10,bb10](1647926)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbebebbbbebb54](1654989)3M[22,22](1657487)4M[100,ebebeeebbbbbeeebeeeeb59](1665416)4M[100,bbbbbbbbbbbbbbbbbbbebbbbbbbbbbbbbbbbbbbbbbbbbbbeeb38](1669686)4M[100,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbebbbbbebbbe18](1671410)4M[85,eebbbbbbeeeebbbbbbbbeeeeeeeeeeeeeeeebbb7](1672381)5M[100,bbbbeeeeeeeebbbbbbbb73](1685433)5M[100,bbbbbeeeeeeeeebbbbbbe75](1694640)5M[100,bbbbbbbeeeeeeebbbbbbbbbbb77](1702086)5M[100,bbeeeeeebbbeeeeeebbbeeb49](1706760)4M[20,bebbe15](1708208)5M[100,ebeeeebbeeebbbeebbbbeeeebbbeeebbee30](1711735)4M[42,beebbbebbe31](1715317)5M[100,beebbbbbeeeeebeeebbbebb51](1722855)5M[100,eeeebbeeeebbbebbb29](1724807)4M[9,9](1725343)5M[100,bbbbbbbbbbbbb47](1728999)4M[31,bbbbbb31](1731786)5M[100,bbeeeeeebbbbb52](1736397)4M[17,17](1738341)5M[100,bbbebbeeeeeebbeeeeeeeeeeeeeeeeeeee36](1743293)4M[100,eebbbeebebeeeeebb72](1752287)4M[17,bbb16](1753678)5M[100,bbbbbebbebbbbbb70](1759532)4M[94,beebbbeeebebbbbeeeeebbbbbee76](1768129)5M[100,bbebbebbbbb54](1777106)4M[51,bb49](1782836)5M[100,bbbbbbbbbeebeeebb77](1799793)4M[16,16](1803541)5M[100,bbbbbbbbbebbbeeb77](1814485)4M[22,b22](1818403)5M[100,eeebbbeeeeeebbbbe78](1832871)4M[45,eebbeeebbbbbbbbbbb43](1837374)5M[100,bbbbbbbbbbbbeebbbbbbbb69](1856324)4M[1,1](1856532)5M[100,bbbbbbbbbbbbbbbbbeebbebebbe63](1863510)5M[100,bbbeeeeebebeebbbeeeeeebb43](1867372)4M[78,beebbbe54](1872695)5M[100,eeeeebbbebbbebbbbbeebbbbebb52](1878376)4M[19,eeeeeeb14](1879681)5M[100,eeeeebbeeebeeebbebeebbe35](1882922)4M[28,bbbbbbbbbbe21](1885101)5M[100,eeebbbbbeeeeeeeeeeebebeeebeeebbbeee16](1886165)5M[100,bbbbbbbbbbbbbbbbbbbb74](1894014)4M[100,bbbbbbbbebbbbbbbbbbbbbeeb98](1902627)3M[10,10](1903489)4M[100,bbbbbbbbbbbbbbbbbbebbbbbeebeebb50](1908245)4M[75,beebbbbbbbbbebbbbebee33](1910756)5M[100,eeeeeeeebbbbbbbbbbbbbbbbb55](1915104)4M[31,eebebb31](1920388)5M[100,bbeebbb83](1933202)4M[1,1](1933211)5M[100,beeeeeeeeeebeeb64](1941170)4M[49,bbbbbbbbbbb48](1945575)5M[100,ebbbbbbbbb62](1952901)4M[95,bbbbbbbbbeeebbbbbbbbbbeeebbbbbbeeee75](1961518)5M[100,eeeeeeeebbbbbbbbbbbbeebb72](1974092)4M[55,ebbeb53](1979517)5M[100,bbbbb87](1990214)4M[63,eeeebbbeeeebb52](1996022)5M[100,eeeebeeeeebbbbbeee75](2010768)4M[46,bb46](2020372)5M[100,beebeebbb71](2033347)4M[17,beeeeebb11](2035220)5M[100,b72](2050677)5M[100,bbbbbbbbeeeebbbbeebbeebbbbeeb26](2052840)5M[100,eeeeebeeeeebbbbeeeeeebbbb52](2058152)5M[100,eebeeeebeeeeebbbeeebbeeeeeeebeee44](2063612)4M[7,7](2064627)5M[100,eeebbbeeeeeeeeebeeeebeeebbeeb53](2070549)4M[45,bebeeeeeeebb43](2077361)5M[100,eeeebbeeeb89](2092244)4M[6,6](2093634)5M[100,bbeebbbebbbbbbbbbeebbbbbb50](2099070)5M[100,eeeeeeebeebbbbbbebeeeee73](2106624)4M[100,eeeeeebbbbeebbbbebbbbbbbbbbbbbebbbbbbbeb84](2116218)4M[100,bebbbeeeeeeeeeebbebbbbbbbbbbbbbb92](2125948)4M[19,b19](2127644)5M[100,bbbbbbbbbbbbbb86](2138890)4M[7,7](2139499)3M[1,1](2139505)5M[100,eeeeeeeeeebebebbbbbbbbbb35](2143966)4M[77,ebbbbbeb59](2152919)5M[100,bebbebb89](2167460)4M[100,bbbbeebbbebbbbb88](2183103)4M[26,ebeee22](2186028)5M[100,beeebbbb91](2199744)4M[31,eeeebbbbb23](2205456)3M[3,3](2205685)4M[57,bbbbeebbbbbbbbe42](2212542)5M[100,bbbbbbbbbbbbeeeebbbbe80](2225254)4M[100,b98](2240031)3M[3,3](2240208)4M[87,bbbbbbbebeeb79](2250740)5M[100,bbeeb90](2268393)4M[29,beeeeeebb25](2270515)4M[14,bb14](2272853)5M[100,bbbbbbbbbeebeeeeebbbbbb76](2286728)4M[57,bebbb47](2296324)5M[100,bbebebebbbbbbbbbeee81](2310974)4M[100,bbeebeeeeeebeeeeeebebbebbb77](2322260)4M[12,11](2323018)3M[5,b4](2323231)4M[59,eeeeebbbbbeebbbbbbbbbbbbbbbbbbbeebbbbbbbbbbbbbbbbe3](2323302)5M[100,beeb83](2338793)4M[84,eeebeeeeeeebbebb70](2350794)3M[28,ebbbbbebb19](2353080)4M[100,bbeebbbbbbbbbbbbbbbbebbbeebbb62](2360534)4M[100,beebebbbbbbbbbbbbbbbbbbbbbbebbbbbebbbe45](2364073)4M[100,eeebbeeeebbbbbbebbebbbbbbbbbbbbbeb42](2367607)4M[100,eeeebbbeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb29](2370055)4M[38,eebbbbbbbbbbb4](2370248)5M[100,bbbbbbeeebee76](2389741)4M[100,ebebbbbbb91](2413178)4M[62,beeeeeebb53](2422310)5M[100,bbb82](2436513)4M[25,eeebb19](2439559)5M[100,eebbbbebbbbbb79](2447244)4M[61,eeeeebbbbe49](2454995)5M[100,eeeebbbeb80](2482694)4M[6,6](2485193)5M[100,bbbeeb93](2513646)4M[23,22](2520251)5M[100,beebeeeebeeeee82](2537346)4M[66,bbbbbb65](2554167)4M[6,4](2554731)3M[26,bbbbbbbbb16](2555924)4M[100,bbbbbeeeeeeeeb76](2570002)4M[100,bbbbbbbbbbbbbbbbbbbbbeebbbbbeeeebbeb60](2576227)4M[100,bbbbeebbbbbeeeebbbbbbeeeebbbbbbbbeeeebbebbbebbbbbbbbbb35](2579891)4M[38,bbbbbbbbbbb29](2583089)5M[100,bbbbeebbb76](2603912)4M[2,2](2604492)5M[100,bbbbbbeebbbb86](2622300)4M[7,7](2623794)5M[100,beeebeeebbb80](2641457)4M[29,bbee27](2646529)5M[100,bbbeebbbbbeebeeebeeb75](2660987)4M[14,bb14](2663923)5M[100,bbbbbbe87](2681790)4M[31,beeee29](2690612)5M[100,beeeeeeeee84](2717524)4M[24,24](2725269)5M[100,bb95](2750915)4M[58,bbbeebebb53](2758264)3M[2,2](2758763)4M[5,5](2759446)5M[100,bbbeeebbbbbb83](2777260)4M[8,8](2779775)5M[100,beee91](2797622)4M[9,9](2799014)5M[100,ebeeeeeeeeeeeb88](2813507)4M[10,10](2816473)5M[100,bbb92](2835919)4M[29,eeee27](2841969)5M[100,bbbbbbbbbbbbbebbbbbbbeee56](2855365)4M[16,eeeee15](2859190)5M[100,bbbbbbbbbebebbbbeeee74](2876953)4M[21,21](2884295)5M[100,bebeee88](2911231)4M[100,beeeeebbbb92](2922346)3M[2,2](2922767)4M[26,bbeebeb22](2925504)5M[100,bbbbbbeeebbb87](2944834)4M[17,17](2950322)5M[100,bbebe77](2967695)5M[100,bbeeebbbbbbebbbeeebbbbbebbbeb28](2973329)5M[100,bbeebbbeeeeeeeeebbebeeeeeeeeeeebbeeb29](2979053)4M[30,bbbbbbeebbeeb17](2980621)5M[100,ebbbeeeebebeeeeebebbbeeeeeeeeeeeeeeeeb25](2984904)5M[100,bbebbee57](2995258)4M[20,eeeeeee17](2997339)5M[100,ebbbbbbbbbeeebbbeeeeeeeebbbbe35](3003523)4M[6,6](3004342)5M[100,beeeeeebbbeeebeeeeebbeeeeeeeebeeeeeeeeeebbeeeeeee24](3009053)5M[100,bbeebbbbbb36](3017241)5M[100,eeeebebeeeee48](3026498)4M[13,bee13](3027693)5M[100,ebeeeeeeeeeeeebebeeee28](3032341)5M[100,ebebebbbeeeebeeeeeeee69](3041886)4M[100,eebeebeeeeebbeeeebbbbbbbbbbebbbb76](3052940)4M[93,bbbbbeeeeeeeebbbbbbbbbbbbbeebbbbbee76](3062728)5M[100,bbeebebeeeeebbbb69](3075863)4M[86,83](3102109)3M[1,1](3102126)5M[100,beebbbeeebb66](3125604)4M[81,bbbbbeeebbbbbbeeebbebbbbbeb58](3143955)5M[100,bbbeeeeee80](3172745)4M[100,ebeeb97](3198270)3M[9,b9](3202249)4M[100,beebeebbeebbeeeeeebeebbeeeebeebbeeeeeebbb59](3214452)3M[2,2](3215271)4M[5,b5](3216487)5M[100,eeeeeeeeeeeeeeeeeeeeebeeeeeeeeeb64](3242582)4M[100,eeeee91](3257322)4M[33,bbb30](3259331)3M[4,4](3259552)4M[57,bbeeeebebbbbbbebbeeb37](3266261)5M[100,eeeeeeeeb90](3284501)4M[32,eeeeeeeeeeeee10](3283688)4M[6,4](3283081)3M[2,2](3283318)4M[3,3](3283693)5M[100,eeebbbbbbbbbbe52](3273823)4M[100,ebbeebebbebbbbeeeebb71](3281497)3M[17,17](3285301)4M[100,bbbbb89](3307484)4M[80,beeeebbb61](3321623)3M[10,10](3325696)4M[100,beebeeb88](3341363)4M[10,10](3342790)5M[100,eeeeeeeeeeebeebebb75](3324411)4M[40,ebbbebe34](3330939)5M[100,ebebbbbb80](3344638)4M[32,ee29](3351388)3M[15,14](3355232)4M[89,bbbbbbb62](3366079)5M[100,eeebeeeebbeeeeee74](3380976)4M[33,bbb32](3386433)5M[100,eeeebbbbbb86](3401743)4M[100,bbbeebeeeebb86](3414933)4M[26,ee25](3419193)5M[100,eeeeebeeebebeb79](3433779)4M[52,eeebeeeeee46](3442657)5M[100,bbeeeeeeebb97](3462586)4M[100,bbebebeeeeebeeeeeeeeeebebe55](3471286)3M[1,1](3471592)4M[79,beeeeeeeeeeeeeeeeeeeeeeeeeee27](3473412)3M[2,b0](3473076)5M[100,eeeeebbbb80](3491570)4M[29,ee27](3502423)5M[100,eeebeeb89](3518741)4M[100,bbeeebb96](3534927)3M[7,7](3536602)4M[38,bebbbb25](3541700)5M[100,eeeeeeeeeeeeeeeeeeeeb87](3564807)4M[84,beee81](3576712)3M[2,2](3577577)4M[11,b11](3578870)5M[100,bbbbbbbbbeeebe66](3590625)4M[67,beeee64](3599035)3M[5,5](3600043)4M[21,21](3602595)3M[1,1](3602603)4M[11,11](3605023)3M[34,eeeeeeeb29](3609959)4M[100,bbbbbbbbb90](3624513)4M[100,beeeeeebebeebbbbbbbbbbbbbebbbbbebbbbebb57](3628637)3M[40,eee36](3633447)4M[100,bbbbbbbbbb83](3642186)3M[12,bbbbbb12](3644262)4M[100,bbbbbbbbbbbbbebbbbbbb71](3658259)4M[100,bbbbeebbbbeeebbbbbeeeebbb45](3662355)4M[100,eeeeeeebeebbbbbbbbbbbbbbbebbbbbbbbbbbbbe47](3668616)4M[100,bbeeeeebbebbbeebeebbb65](3674560)4M[100,eebbbbbeeeebbbbbbbbbbbeeeeeeeeebbeeeeeeeeeeeeebeeb46](3678270)4M[100,eeeeeeeeebeeeeeebebebbbbbbbbeeebbbbbbbbbbb26](3680360)4M[100,bbbbeeeeebeeeeebbbbbbebbeeeeebb22](3683191)4M[100,bbebbbbbbbbbbbbeeebebbbbbbbbbbeeebee30](3685706)4M[100,bbbbbbbbeeeeeebbbbbbeeeeebbb48](3691659)4M[16,eeeeeeeee7](3692411)5M[100,ebbeeeeeeeebebeeeebeeeebb74](3706409)4M[100,ebeebbebbb90](3724010)4M[2,2](3724191)5M[100,eeeebb86](3743400)4M[100,eee95](3763220)4M[100,eebeeeeebeb89](3773763)3M[10,e9](3775152)4M[100,eeeeebbbeeeeeeeeeeebbb27](3779955)4M[16,16](3781264)5M[100,eeeebeebb95](3797652)4M[100,eeeeee97](3817726)3M[5,5](3818383)4M[100,ebbbb86](3832624)3M[27,27](3837991)4M[100,bbbbbbb72](3844658)3M[43,40](3847918)4M[100,ebbebbeeeeeebbbbbbbbbbbbb66](3859974)3M[98,eeeeeee88](3874657)4M[100,beeeeeeebbbbbbbb52](3883636)3M[86,eeeeee78](3901918)4M[100,eebbbbebe78](3916311)3M[5,5](3917318)4M[100,91](3935123)4M[100,eeeeeeeeeb84](3947109)4M[100,eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebb63](3953993)4M[100,beeeeeeeeeeb90](3962763)3M[36,eeeeebebb31](3967521)4M[100,ebeebeeebbbeee87](3979887)3M[17,ee14](3982697)4M[100,eeeeeeeeeeeeeeeeebbeeeebe51](3992031)3M[7,7](3993246)4M[100,eeeeeeeeee75](4002340)3M[3,3](4002803)4M[100,ebbbbbbeeebbeeeeebbee66](4012745)3M[1,b0](4012628)4M[100,bbebbbbebbbeeee81](4019967)3M[9,9](4021206)4M[100,ebbebbbbbeeeebbbbbbb81](4030222)3M[5,5](4031574)4M[100,bbbbbbbeebb93](4049744)3M[28,bb28](4054084)4M[100,bbbbebbbeebb79](4073325)4M[100,bbbbbbbbbeebbbbbbbbebbbbbbbbbbb74](4080181)3M[55,bbbbbbbbbbbbbbb54](4086677)4M[100,eebb59](4095316)3M[56,ee55](4110773)2M[6,b6](4112067)3M[35,32](4115589)4M[100,ebbbbbeeeeeb60](4125851)3M[12,eee12](4129624)4M[100,eeebbebbbeeeeeee80](4140571)3M[22,22](4146302)2M[3,3](4146561)3M[18,b17](4147887)4M[100,ebbbeeeeeeeee81](4159088)3M[12,12](4160283)4M[100,bbbbbbbbbeeeeeeeeeeeeeee75](4171693)3M[19,19](4181197)4M[100,beebbbeebb73](4195882)4M[100,beeeeeeeeeeee93](4203353)3M[20,20](4209512)4M[100,bbbbeeeeeeeeb79](4224924)3M[8,8](4225442)4M[100,ebebbbbbbbbbeebbbbbbbb71](4232113)3M[41,41](4238313)4M[100,bbb88](4257964)3M[16,16](4259377)4M[100,bbbbbbbbbbbbbbb60](4265884)4M[100,ebbbbbbeebeeebebbbbbbeeeeebbbb38](4270763)3M[7,7](4271859)4M[100,eebeebbbbbbeeebbeebeeeeeebbbbeeeeebbbbb47](4276665)4M[100,ebeebbbbbbbbbeeeeeeebbbbbbeeebbbbeebbbbbbbbbbeeeeeeebbbb37](4279379)4M[100,eebbbbeebbbbbbbbbbbeeeeeebbbeebeeeeeeeb27](4281213)4M[100,bbbbbbebbbbbbbbbbbebb29](4283959)3M[6,6](4284649)4M[100,bbbbbbbbbeebeebbbbbbeb68](4294716)3M[7,7](4295282)4M[100,bbbbbbbeeeeeeeeeebbbbbbbeeeebbbbb37](4298478)3M[8,8](4299776)4M[100,bbbbbeeebbeebeeeeebbbee43](4306091)4M[100,bbbbbeeebbbbbbbbeeebbeebbbbbbbbeeebbbbbbeeeeebbbebe46](4309988)4M[100,eeeebbbbbbbbbbbbbb53](4314385)4M[100,bbbbbbbeeebbbeebbbbbeeee46](4316910)4M[100,bbbbbbbebbbbeebbbbbebbbebbbbbb30](4318928)4M[100,ebeebbbbbebbeebb40](4322988)3M[5,5](4323419)4M[100,eeeeeeeebbbbbbbbeeee57](4330986)4M[100,ebbbbbbbbbbbbbbeeeebeebbbbbee48](4337199)4M[100,bbbbbbbbeebebbbbbebbbbbbbeb43](4341739)4M[100,bbbbbbeeeeeebbbeeeeebeeb23](4343446)4M[100,eeebbebbbbbbbbeeeeeeeeebeeeebbbbbbbbeeeeeeeee35](4348753)4M[100,bbbbbbbbbbeeeeeeebbbbeebbeee35](4352421)4M[100,bbeeeeeeebbbbbbbbbbbbb52](4355928)4M[100,bbebbbbbebbbbbbbbbbbbbbee34](4356612)3M[6,6](4357085)4M[100,beebbbbeeebb73](4365263)4M[100,eeebbbbbbbb86](4377905)4M[10,10](4375721)5M[100,eeeeeeeeeeeeeeeeebbbbb77](4328309)4M[100,eee97](4359876)3M[40,40](4363788)2M[4,4](4364611)3M[10,10](4365101)4M[100,eeeeeeebbee89](4379052)3M[5,5](4379318)4M[100,eeeeebbbbbbeebbbeeeeeeeeeb78](4395650)3M[77,77](4405536)2M[3,3](4406518)3M[11,11](4409653)4M[100,ebbeeeeeeebbbebebe75](4427114)3M[31,31](4435528)4M[100,eeeeeeeeeeeb88](4455307)3M[30,30](4458126)4M[100,ebee94](4477824)3M[30,28](4487253)4M[100,eeeeeeeeebb88](4511482)3M[30,30](4517716)4M[100,ebb72](4531873)3M[75,eee69](4550359)2M[5,5](4551582)3M[19,19](4554049)4M[100,eeeeebb88](4569413)3M[49,bb47](4576613)2M[3,3](4577014)3M[27,27](4582958)4M[100,beeeeebbeeeeebeeeeb72](4594457)3M[19,eeeb17](4596531)2M[4,4](4597355)3M[11,10](4600051)4M[100,bbeebbbbbb72](4609020)3M[7,7](4609796)4M[100,beeebbbb92](4625640)3M[12,12](4626998)4M[100,bee93](4637826)3M[25,e23](4638452)2M[1,1](4638450)3M[3,3](4638706)4M[100,eebebbbbbbbbbeeeeeeebbbbbeebbbbbbb37](4639672)4M[100,bebbbbbbbbbbbbbeebbbebbbbbebbbbbbeebbbbbebb25](4638920)4M[100,bbbbbbeeeebbbbbbbeeeeeebbbee30](4638522)4M[82,bbbbeebbbbbbbbebe32](4635831)5M[100,eeee81](4645890)4M[100,eeb88](4669830)3M[33,30](4673553)4M[100,e92](4685774)3M[69,69](4689217)2M[6,6](4689996)3M[15,bbbb11](4691284)4M[95,bbbbbeeeebbbbbbbbeeeeeeeee57](4698718)3M[6,b6](4700390)4M[14,11](4702532)5M[100,eeeebebebeeee98](4622000)4M[100,ebeeebbb84](4639012)3M[37,eeee18](4640420)4M[100,eeeeeeeeeeeebbbbe70](4645526)3M[29,bbbbbbbee10](4642882)4M[18,eeeeeb6](4639051)3M[2,0](4638676)5M[9,ebeebb0](0)
+NF:54755 product criterion:380300468, ext_product criterion:92356719 
+[65535:15]1(143)s(142)s(141)s(140)s(139)s(138)s(137)s(136)s(135)s(134)s(133)s(132)s(131)s(130)s(129)s(128)s(127)s(126)s(125)s(124)s(123)s(122)s(121)s(120)s(119)s(118)s(117)s(116)s(115)s(114)s(113)s(112)s(111)s(110)s(109)s(108)s2(107)s(106)s(105)s(104)s(103)s(102)s(101)s(100)s(99)s(98)s(97)s(96)s(95)s(94)s(93)s(92)s(91)s(90)s(89)s(88)s(87)s(86)s(85)s(84)s(83)s(82)s(81)s(80)s(79)s(78)s(77)s(76)s(75)s(74)s(73)s(72)s(71)s(70)s(69)s(68)s(67)s(66)s(65)s(64)s(63)s(62)s(61)s(60)s(59)s(58)s(57)s(56)s(55)s(54)s(53)s(52)s(51)s(50)s(49)s(48)s(47)s(46)s(45)s(44)s(43)s(42)s(41)s(40)s(39)s(38)s(37)s(36)s(35)s(34)s(33)s(32)s(31)s3(30)s(29)s(28)s(27)s(26)s(25)s(24)s(23)s(22)s(21)s(20)s(19)s(18)s(17)s(16)s(15)s(14)s(13)s(12)s(11)s(10)s(9)s4(8)s(7)s(6)s(5)s(4)s(3)s(2)sss
+(S:143)-----------------------------------------------------------------------------------------------------------------------------------------------
+STDIN  96> I2;
+I2[1]=w2321
+I2[2]=w2320
+I2[3]=w2312
+I2[4]=w2310
+I2[5]=w2302
+I2[6]=w2301
+I2[7]=w1321
+I2[8]=w1320
+I2[9]=w1312
+I2[10]=w1310
+I2[11]=w1302
+I2[12]=w1301
+I2[13]=w1221
+I2[14]=w1220
+I2[15]=w1212
+I2[16]=w1210
+I2[17]=w1202
+I2[18]=w1201
+I2[19]=w0321
+I2[20]=w0320
+I2[21]=w0312
+I2[22]=w0310
+I2[23]=w0302
+I2[24]=w0301
+I2[25]=w0221
+I2[26]=w0220
+I2[27]=w0212
+I2[28]=w0210
+I2[29]=w0202
+I2[30]=w0201
+I2[31]=w0121
+I2[32]=w0120
+I2[33]=w0112
+I2[34]=w0110
+I2[35]=w0102
+I2[36]=w0101
+I2[37]=w2311*w2322
+I2[38]=w2300*w2322
+I2[39]=w1322*w2322
+I2[40]=w1222*w2322
+I2[41]=w0322*w2322
+I2[42]=w0222*w2322
+I2[43]=w0111*w2322
+I2[44]=w0100*w2322
+I2[45]=w2300*w2311
+I2[46]=w1311*w2311
+I2[47]=w1211*w2311
+I2[48]=w0311*w2311
+I2[49]=w0211*w2311
+I2[50]=w0122*w2311
+I2[51]=w0100*w2311
+I2[52]=w1300*w2300
+I2[53]=w1200*w2300
+I2[54]=w0300*w2300
+I2[55]=w0200*w2300
+I2[56]=w0122*w2300
+I2[57]=w0111*w2300
+I2[58]=w0100*w2300+w0111*w2311+w0122*w2322-1
+I2[59]=w1311*w1322
+I2[60]=w1300*w1322
+I2[61]=w1222*w1322
+I2[62]=w0322*w1322
+I2[63]=w0211*w1322
+I2[64]=w0200*w1322
+I2[65]=w0122*w1322
+I2[66]=w1300*w1311
+I2[67]=w1211*w1311
+I2[68]=w0311*w1311
+I2[69]=w0222*w1311
+I2[70]=w0200*w1311
+I2[71]=w0111*w1311
+I2[72]=w1200*w1300
+I2[73]=w0300*w1300
+I2[74]=w0222*w1300
+I2[75]=w0211*w1300
+I2[76]=w0200*w1300+w0211*w1311+w0222*w1322-1
+I2[77]=w0100*w1300
+I2[78]=w1211*w1222
+I2[79]=w1200*w1222
+I2[80]=w0322*w1222+w0222*w1322+w0122*w2322-1
+I2[81]=w0311*w1222
+I2[82]=w0300*w1222
+I2[83]=w0222*w1222
+I2[84]=w0122*w1222
+I2[85]=w1200*w1211
+I2[86]=w0322*w1211
+I2[87]=w0311*w1211+w0211*w1311+w0111*w2311-1
+I2[88]=w0300*w1211
+I2[89]=w0211*w1211
+I2[90]=w0111*w1211
+I2[91]=w0322*w1200
+I2[92]=w0311*w1200
+I2[93]=w0300*w1200-w0211*w1311-w0222*w1322-w0111*w2311-w0122*w2322+1
+I2[94]=w0200*w1200
+I2[95]=w0100*w1200
+I2[96]=w0311*w0322
+I2[97]=w0300*w0322
+I2[98]=w0222*w0322
+I2[99]=w0122*w0322
+I2[100]=w0300*w0311
+I2[101]=w0211*w0311
+I2[102]=w0111*w0311
+I2[103]=w0200*w0300
+I2[104]=w0100*w0300
+I2[105]=w0211*w0222
+I2[106]=w0200*w0222
+I2[107]=w0122*w0222
+I2[108]=w0200*w0211
+I2[109]=w0111*w0211
+I2[110]=w0100*w0200
+I2[111]=w0111*w0122
+I2[112]=w0100*w0122
+I2[113]=w0100*w0111
+I2[114]=w0122*w2322^2-w2322
+I2[115]=w0122^2*w2322-w0122
+I2[116]=w0111*w2311^2-w2311
+I2[117]=w0111*w1300*w2311+w0122*w1300*w2322-w1300
+I2[118]=w0111*w1200*w2311+w0122*w1200*w2322-w1200
+I2[119]=w0111*w0300*w2311+w0122*w0300*w2322-w0300
+I2[120]=w0111*w0200*w2311+w0122*w0200*w2322-w0200
+I2[121]=w0111^2*w2311-w0111
+I2[122]=w0211*w1311*w2300+w0222*w1322*w2300-w2300
+I2[123]=w0222*w1322^2-w1322
+I2[124]=w0222*w1211*w1322+w0122*w1211*w2322-w1211
+I2[125]=w0222*w1200*w1322+w0122*w1200*w2322-w1200
+I2[126]=w0222*w0311*w1322+w0122*w0311*w2322-w0311
+I2[127]=w0222*w0300*w1322+w0122*w0300*w2322-w0300
+I2[128]=w0222^2*w1322-w0222
+I2[129]=w0211*w1311^2-w1311
+I2[130]=w0211*w1222*w1311+w0111*w1222*w2311-w1222
+I2[131]=w0211*w1200*w1311-w0122*w1200*w2322
+I2[132]=w0211*w0322*w1311+w0111*w0322*w2311-w0322
+I2[133]=w0211*w0300*w1311-w0122*w0300*w2322
+I2[134]=w0211^2*w1311-w0211
+I2[135]=w0100*w0211*w1311+w0100*w0222*w1322-w0100
+I2[136]=w0122*w1200*w1311*w2322-w1200*w1311
+I2[137]=w0122*w0300*w1311*w2322-w0300*w1311
+I2[138]=w0122*w1211*w1300*w2322-w1211*w1300
+I2[139]=w0122*w0311*w1300*w2322-w0311*w1300
+I2[140]=w0122*w0200*w1211*w2322-w0200*w1211
+I2[141]=w0122*w0211*w1200*w2322-w0211*w1200
+I2[142]=w0122*w0200*w0311*w2322-w0200*w0311
+I2[143]=w0122*w0211*w0300*w2322-w0211*w0300
+I2[144]=w0111*w0222*w1322*w2311+w0122*w0211*w1311*w2322-w0211*w1311-w0222*w1322-w0111*w2311-w0122*w2322+1
+max memory(KB):1619136  time(sec):693.44 = 11:33.44
