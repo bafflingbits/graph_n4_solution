@@ -40,13 +40,13 @@ with open(fname, "r") as f:
     for line in f:
         linenum += 1
         # empty
-        m = re.fullmatch('^[^.]*\.[^ ]*(//.*)?\n$', line)
+        m = re.fullmatch(r'^[^.]*\.[ ]*(//.*)?\n$', line)
         if m:
             continue
         # contains one polynomial
-        m = re.fullmatch('^[^.]*\.([^,;]*)([,;])[^ ]*(//.*)?\n$', line)
+        m = re.fullmatch(r'^[^.]*\.([^,;]*)([,;])[ ]*(//.*)?\n$', line)
         if not m:
-            print(f"ERR: could not parse, line {linenum}: {repr(line)}")
+            print(f"ERR: could not parse, line {linenum}: {line!r}")
             sys.exit(1)
         I.append(m.group(1))
         if m.group(2) == ";":
@@ -58,7 +58,7 @@ with open(fname, "r") as f:
     # search for subI def
     for line in f:
         linenum += 1
-        m = re.fullmatch('^.* ideal subI = ideal\(([^)]*)\);[^ ]*(//.*)?\n$', line)
+        m = re.fullmatch(r'^.* ideal subI = ideal\(([^)]*)\);[ ]*(//.*)?\n$', line)
         if not m:
             continue
         subI = m.group(1)
@@ -72,7 +72,7 @@ with open(fname, "r") as f:
     for line in f:
         linenum += 1
         # contains one polynomial
-        m = re.fullmatch('^T2\[[^\]]*\]=(.*)\n$', line)
+        m = re.fullmatch(r'^T2\[[^\]]*\]=(.*)\n$', line)
         if m:
             if indef == 0:
                 indef = 1
@@ -84,7 +84,7 @@ with open(fname, "r") as f:
     else:
         print("ERR: early end of file, search/collect coeff entry")
         sys.exit(1)
- 
+
 
 #print(f"len(I)={len(I)}")
 #print(f"len(coeff)={len(coeff)}")
