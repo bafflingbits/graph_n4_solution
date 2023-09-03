@@ -1,0 +1,4 @@
++ math -script "verify_g43_forbidden_mixed2_3star.m" 2>&1
+out = w0312*w1322*w2322
+SUCCESS: passed verification
+max memory(KB):142704  time(sec):0.46 = 0:00.46

@@ -103,6 +103,6 @@ with open(outname, "w") as f:
     f.write("\n")
     f.write("out = Simplify[Expand[ideal.coeff]];\n")
     f.write("Print[\"out = \", out];\n")
-    f.write("Print[If[out == subI, \"SUCESS: check passed\", \"ERROR: check failed\"]];\n")
+    f.write("Print[If[out == subI, \"SUCCESS: passed verification\", \"ERROR: verification failed\"]];\n")
 
 
