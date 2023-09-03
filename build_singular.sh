@@ -25,6 +25,5 @@ git checkout $VERSION_TAG
 ./configure
 git apply ../patches/debug_print_remaining.patch
 git apply ../patches/lift_early_detection.patch
-git apply ../patches/larger_bundles.patch
 make -j$NPROC
 
