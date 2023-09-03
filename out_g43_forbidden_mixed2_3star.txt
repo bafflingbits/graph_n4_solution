@@ -1,5 +1,4 @@
-+ ./Singular/Singular/Singular -q -e 2>&1 < "g43_forbidden_mixed2_3star.s"
-/home/ubuntu/data/g2/Singular/Singular/.libs/../LIB/.singularrc   1> system("--allow-net", 1);
++ ./Singular/Singular/Singular -q --no-rc -e 2>&1 < "g43_forbidden_mixed2_3star.s"
 STDIN   1> // n=4 c=3
 STDIN   2. // total variables: 54
 STDIN   3. // total constraints: 81
@@ -182,4 +181,4 @@ T2[81,1]=0
 STDIN  99> // verify lift
 STDIN 100. matrix(I)*T2;
 _[1,1]=w0312*w1322*w2322
-max memory(KB):1028268  time(sec):41.47 = 0:41.47
+max memory(KB):952376  time(sec):82.67 = 1:22.67

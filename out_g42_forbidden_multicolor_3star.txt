@@ -1,5 +1,4 @@
-+ ./Singular/Singular/Singular -q -e 2>&1 < "g42_forbidden_multicolor_3star.s"
-/home/ubuntu/data/g2/Singular/Singular/.libs/../LIB/.singularrc   1> system("--allow-net", 1);
++ ./Singular/Singular/Singular -q --no-rc -e 2>&1 < "g42_forbidden_multicolor_3star.s"
 STDIN   1> // n=4 c=2
 STDIN   2. // total variables: 24
 STDIN   3. // total constraints: 16
@@ -52,4 +51,4 @@ T2[16,1]=0
 STDIN  34> // verify lift
 STDIN  35. matrix(I)*T2;
 _[1,1]=w0101*w0201*w0301
-max memory(KB):13948  time(sec):0.04 = 0:00.04
+max memory(KB):20704  time(sec):0.14 = 0:00.14
