@@ -78,7 +78,7 @@ def allConstraints(nNodes,nColors):
     return plist
 
 
-vlist = allVariables(numNodes, numColors) 
+vlist = allVariables(numNodes, numColors)
 plist = allConstraints(numNodes, numColors)
 
 print("// n={} c={}".format(numNodes, numColors))

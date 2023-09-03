@@ -15,7 +15,7 @@ STDIN  13.     // With this guidance, the calculation is < 1 sec,
 STDIN  14.     // without it, the calculation takes a lot of memory, and much longer.
 STDIN  15.     // (An attempt to run without guidance ran out of memory at this stage:
 STDIN  16.     //   max memory(KB):143180284  time(sec):13107.47 = 3:38:27 )
-STDIN  17.     w0322*w1322*w2322,  // from: g43_forbidden_monochrome_3star.s 
+STDIN  17.     w0322*w1322*w2322,  // from: g43_forbidden_monochrome_3star.s
 STDIN  18.     w0322*w1322*w2312,  // from: g43_forbidden_mixed2_3star.s, with node relabelling
 STDIN  19.     w0322*w1312*w2322,  //        ''
 STDIN  20.     w0322*w1312*w2312,  // from: g43_forbidden_mixed1_3star.s, with node relabelling
@@ -195,4 +195,4 @@ T2[85,1]=-w1312*w2312
 STDIN 109> // verify lift
 STDIN 110. matrix(I)*T2;
 _[1,1]=w1312*w2312
-max memory(KB):15868  time(sec):0.13 = 0:00.13
+max memory(KB):15892  time(sec):0.13 = 0:00.13

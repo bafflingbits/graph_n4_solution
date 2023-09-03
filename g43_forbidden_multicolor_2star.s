@@ -14,7 +14,7 @@ ideal I =
     // without it, the calculation takes a lot of memory, and much longer.
     // (An attempt to run without guidance ran out of memory at this stage:
     //   max memory(KB):143180284  time(sec):13107.47 = 3:38:27 )
-    w0322*w1322*w2322,  // from: g43_forbidden_monochrome_3star.s 
+    w0322*w1322*w2322,  // from: g43_forbidden_monochrome_3star.s
     w0322*w1322*w2312,  // from: g43_forbidden_mixed2_3star.s, with node relabelling
     w0322*w1312*w2322,  //        ''
     w0322*w1312*w2312,  // from: g43_forbidden_mixed1_3star.s, with node relabelling
