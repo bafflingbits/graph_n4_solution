@@ -5,9 +5,9 @@ The following demonstrates that a monochromatic graph with four nodes (n=4)
 and four colors (c=4) does not exist, thus proving Krenn's conjecture for
 the n=4 case. In fact, something slightly stronger can be proven:
 
-> There is a unique set of edges for the four node, three color monochromatic
-graph (up to node and color relabelling), which is just a coloring of `K_4` 
-(the complete simple graph on four nodes).
+> A four node, three color monochromatic graph can only be formed by
+a coloring of `K_4` (the complete simple graph on four nodes), and thus
+is unique up to node and color relabelling, and weight rescaling.
 
 This is a slightly stronger statement, as the non-existence of an n=4 c=4
 monochromatic graph can be derived from this.
@@ -25,36 +25,38 @@ terminology.
 
 ## Polynomial constraints
 
-The constraints on the edge weights for a graph to be monochromatic
-can be written as a set of multilinear polynomials in the edge weights,
-where a "solution" (the existence of a monochromatic graph) would
-satisfy that every polynomial in the set evaluates to zero.
+Given a fixed number of nodes and colors, we can enumerate all the possible edge
+weights and assign a variable to each one.
+Then the constraints on the edge weights for a graph to be monochromatic
+can be written as a set of multilinear polynomials in the edge weights.
+A "solution" would then be a set of edge weights satisfying the requirement
+that every polynomial in the set evaluates to zero.
 
-There is a constraint for each possible color labeling of the nodes.
-So for a n node, c color monochromatic graph, there are `c^n` polynomial constraints.
+There is a constraint for each possible color labelling of the nodes.
+So for an n node, c color monochromatic graph, there are `c^n` polynomial constraints.
 
-To keep this as general as possible, all possible edges variables are included
-and only after a solution is found, and an edge weight is constained to
-zero in a particular solution, would we say that the edge is "not in"
+To keep this as general as possible, all possible edge variables are included
+in the problem setup, and only when the weight is generically constrained to zero,
+or the weight is zero in a particular soluion, would we say that the edge is "not in"
 the resulting graph.
 
 
 ### Naming convention
 
-An edge can be specified by a node and color (n1,c1) for one end, (n2,c2) for
-the other ends, and a weight.
+The edge weight variables are named: `w{n1}{n2}{c1}{c2}`.
 
-The edge weight variables are named: `w{n1}{n2}{c1}{c2}`
-
-Where n1,n2 are labels for the nodes connected by the edges,
+Here n1,n2 are labels for the nodes connected by the edges,
 and c1,c2 are are labels for the colors associated with the edge endpoints
-(color c1 with n1, color c2 with node n2).
+(color c1 with n1, color c2 with node n2). For convenience these labels
+are just taken to be the integers from 0 to (numberOfNodes-1) for the nodes,
+and the integers from 0 to (numberOfColors-1) for the colors.
 
 Since the edge weights are undirected in this problem, it is always taken that
 `n1 < n2` in the edge weight name.
 
 This means when considering an n node, c color monochromatic graph,
 there are `c^2*n*(n-1)/2` edge weight variables.
+
 
 
 # Calculations
@@ -69,7 +71,7 @@ depending on the intended calculation.
 
 The Singular scripts names look like `g{n}{c}_*.s`, where n is the number of
 nodes and c is the number of colors for the underlying graph in that
-calculation.
+calculation. The result is then saved in `out_g{n}{c}_*.txt`.
 
 ## Groebner basis calculations
 
@@ -81,14 +83,14 @@ the resulting Groebner basis is another set of polynomials which describe the sa
 set of constraints. These are "simpler" in a specific sense that is not necessary
 to get into here, except one specific case: if there is no solution in the
 complex numbers, it is guaranteed that the Groebner basis will collapse to a
-set of just one polynomial: {1}. As the resulting polynomial set describing the
+set with just one polynomial: {1}. As the resulting polynomial set describes the
 same constraints, this means any solution would have to satisfy 1 = 0. This is
 how "no solution" is represented mathematically here.
 
 ## Lifting calculations
 
 Let `F` be the set of polynomials we are initially using to define our constraint
-system, where the overall constraint is that: for all `f_i` in `F`, `f_i =0`.
+system, where the overall constraint is that: for all `f_i` in `F`, `f_i=0`.
 
 This means that for *any* polynomial g that we can write in terms of our edge
 weight varibles, for any `f_i` in `F`, `g f_i = 0` is also must hold for a solution.
@@ -108,19 +110,22 @@ we can write `X` in terms of our constraint polynomials `f_i` like so:
 
 `X = sum_i f_i g_i`
 
-in which case we have proven ("derived") that `X` is also a constraint on our solutions.
+in which case we have proven ("derived") that `X` is also constrained to zero on our solutions.
+Or said another way, `X` can be included in out set of polynomial constraints and
+it describes the same constraint system.
 
 (In fact this relates to the sense in which a Groebner basis is a "simpler" description
 of the polynomial constraint system. Because with a Groebner basis, it becomes simple
 to determine if it is possible to solve this for a given `X`, and also simple to
-calculating the "lifting" coefficients (`g_i`) if it is possible.)
+calculate the "lifting" coefficients (`g_i`) if it is possible.)
 
 
 ## Symmetry considerations
 
-The constraints to be a monochromatic graph are symmetric to node and color relabelling.
+The constraints to be a monochromatic graph are symmetric to a permutations of
+variables that correspond to just relabeling the nodes or colors.
 
-Note that this doe NOT mean the polynomial constraints individually have this symmetry.
+Note that this does NOT mean the polynomial constraints individually have this symmetry.
 But it does mean that if you take any constraint polynomial, and apply a relabelling
 of the nodes or colors, you will get another polynomial constraining the system.
 
@@ -134,23 +139,24 @@ find the polynomial defining the constraint for the vertex coloring `(0,0,1,0)`.
   w0100*w2310 + w0201*w1300 + w0300*w1201
 ```
 Similarly, we could swap the color labels `(0 <--> 1)`. Again the original polynomial
-is not symmetric to this change in variables, this now gives the polynomial defining
+is not symmetric to this change in variables, but this now gives the polynomial defining
 the constraint for the vertex coloring `(1,1,1,0)`
 ```
   w0111*w2310 + w0211*w1310 + w0310*w1211
 ```
 
-(In math terminology, the individual polynomials are not symmetric to these variable permuations,
-but the constraint system generated by our polynomial constraints (the ideal generated by our
-polynomial constraints) is symmetric to these variable permutations.)
+(In math terminology, our system of polynomial constraints is call an ideal, in particular
+the ideal generated by our constraint polynomials. With this terminology,
+the individual polynomials are not symmetric to these variable permuations,
+but the ideal generated by our polynomials is symmetric.)
 
 This means if we derive a polynomial constraint like:
 ```
 w0111*w0211*w0311
 ```
-while it means the edge weights `w0111`, `w0211`, `w0311`, at least one must be zero
+while it means that amoung the edge weights `w0111`, `w0211`, `w0311`, at least one must be zero
 (ie. in any solution, at least one of those edges cannot be in the graph), it *also* means
-(after considering the symmetry) that there cannot be a 3-star of monochrome edges 
+(after considering the symmetry) that there cannot be a 3-star of monochrome edges
 (of any color, and centered on any node).
 
 
@@ -166,13 +172,13 @@ it is found there is no solution.
 
 Taking the general costraints for an n=4 c=3 monochromatic graph,
 it is found that solutions exist and they have the following properties:
-- all multi-color weights = 0
+- all multi-color edge weights = 0
 - there are no monochrome multi-edges (from constraints `w2311*w2322`)
-- there is only one monochrome edge of each color indicident on a node (from constraints like `w1322*w2322`)
+- there is at most one monochrome edge of each color indicident on a node (from constraints like `w1322*w2322`)
 
-Therefore we can see that:
-- the mono-chromatic weights are non-zero for only a single perfect matching in each color
-- the three mono-chromatic pefect matchings have a disjoint set of edges
+Since the constraints require at least one monochrome perfect matching of each color to exist, this means:
+- the mono-chromatic weights are non-zero for only/exactly one perfect matching in each color
+- the three monochromatic pefect matchings have a disjoint set of edges
 
 In other words, despite allowing complex weights, the solutions for n=4 c=3
 are equivalent to the simple solutions using non-negative real values weights:
@@ -197,13 +203,13 @@ The above requires trusting the Singular calculation. It would be nice if there
 was some way to break it into smaller pieces that can be verified.
 
 One thing that is nice about a lifting calculation, if that the resulting
-"coefficients" are like "proof certificate" for the result. Anyone, or any
-program, willing to multiply out the polynomial sum can verify the result.
+"coefficients" are like a "proof certificate" for the result. Anyone willing
+to multiply out the polynomial sum and collect like terms, can verify the result.
 
 The simpliest is `g42_forbidden_multicolor_3star.s` as it only requires the constraints
 from two colors to derive: `w0101*w0201*w0301`.
 
-That could easily be checked by hand. The following however eventually become quite
+That could easily be checked by hand. The following however, eventually become quite
 unreasonable to verify by hand.  So later they will be verified by Mathematica as
 an external check.
 
@@ -224,9 +230,9 @@ can be derived from the initial constraints.
 
 ## Deriving g43 results from lifting results
 
-These previous results are derived algebraically from the polynommial constraints.
+The previous lifting results are derived algebraically from the polynommial constraints.
 
-There are also some combinatorial considerations. In the polynomial constraint
+However there are also some combinatorial considerations. In the polynomial constraint
 for a multi-color vertex coloring, if one term (which corresponds
 to the weight of a perfect matching) is non-zero, then at least one other term
 (perfect matching) must also be non-zero if there is any hope for the sum of the
@@ -241,21 +247,21 @@ it is possible to prove by case analysis that the only g43 solution is a colorin
 
 ## Miscellaneous
 
-`g43_multicolor_contradiction.s` was included just to demonstrate other calculation
+`g43_multicolor_contradiction.s` was included just to demonstrate another calculation
 option. If a lifting calculation is difficult, instead of asking
 "is this polynomial also a constraint?", you could ask
 "is a solution possible if I force looking for the subset of solutions that violate that constraint?"
 
 This does not give a nice "proof certificate" like a lifting calculation,
 but this approach can allow asking some difficult questions that could not be calculated otherwise.
-(In this case, it is computationally feasible to get groebner basis for g43, so it is a bit moot here.
+(In this case, it is computationally feasible to get the Groebner basis for g43, so it is a bit moot here.
 But this is helpful for exploring some questions in monochromatic graphs with `n>4`.)
 
 
 # Verifying lift results
 
 A python script `extract_for_mathematica.py` was written to extact the polynomial constraints,
-and lifting "coefficients" from the output of running a the lifting Singular scripts.
+and lifting "coefficients", from the output of running one of the lifting Singular scripts.
 
 Then `run-math-script.sh` can be used to verify a lift result with Mathematica.
 
@@ -264,7 +270,7 @@ but verifying the lift results is much easier.  All the lifted results were succ
 verified with Mathematica.
 
 If desired, other computer algebra systems could similarly be used to provide
-additional checks the results.
+additional checks of the results.
 
 
 # Running the calculations yourself
