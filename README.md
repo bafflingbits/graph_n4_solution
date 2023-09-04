@@ -46,7 +46,7 @@ the resulting graph.
 The edge weight variables are named: `w{n1}{n2}{c1}{c2}`.
 
 Here n1,n2 are labels for the nodes connected by the edges,
-and c1,c2 are are labels for the colors associated with the edge endpoints
+and c1,c2 are labels for the colors associated with the edge endpoints
 (color c1 with n1, color c2 with node n2). For convenience these labels
 are just taken to be the integers from 0 to (numberOfNodes-1) for the nodes,
 and the integers from 0 to (numberOfColors-1) for the colors.
@@ -122,7 +122,7 @@ calculate the "lifting" coefficients (`g_i`) if it is possible.)
 
 ## Symmetry considerations
 
-The constraints to be a monochromatic graph are symmetric to a permutations of
+The constraints to be a monochromatic graph are symmetric to a permutation of
 variables that correspond to just relabeling the nodes or colors.
 
 Note that this does NOT mean the polynomial constraints individually have this symmetry.
@@ -157,8 +157,7 @@ w0111*w0211*w0311
 while it means that amoung the edge weights `w0111`, `w0211`, `w0311`, at least one must be zero
 (ie. in any solution, at least one of those edges cannot be in the graph), it *also* means
 (after considering the symmetry) that there cannot be a 3-star of monochrome edges
-(of any color, and centered on any node).
-
+(of any color, centered on any node).
 
 
 # Calculation results
@@ -173,12 +172,12 @@ it is found there is no solution.
 Taking the general costraints for an n=4 c=3 monochromatic graph,
 it is found that solutions exist and they have the following properties:
 - all multi-color edge weights = 0
-- there are no monochrome multi-edges (from constraints `w2311*w2322`)
+- there are no monochrome multi-edges (from constraints like `w2311*w2322`)
 - there is at most one monochrome edge of each color indicident on a node (from constraints like `w1322*w2322`)
 
 Since the constraints require at least one monochrome perfect matching of each color to exist, this means:
-- the mono-chromatic weights are non-zero for only/exactly one perfect matching in each color
-- the three monochromatic pefect matchings have a disjoint set of edges
+- the monochrome edge weights are non-zero for only/exactly one perfect matching in each color
+- the three monochrome pefect matchings have a disjoint set of edges
 
 In other words, despite allowing complex weights, the solutions for n=4 c=3
 are equivalent to the simple solutions using non-negative real values weights:
@@ -189,7 +188,7 @@ a coloring of `K_4`, the complete simple graph on 4 nodes.
 Now assume by contradiction that there exists a solution to n=4 c>3.
 The constraints are such that any subset of three colors in that
 weight set must satisfy the n=4 c=3 constraints.
-Therefore, for any 3 colors, the mono-chromatic weights should only be
+Therefore, for any 3 colors, the monochrome edge weights should only be
 non-zero for a single perfect matching and the perfect matchings should be
 disjoint between the colors.
 However with n=4, at most there are three disjoint perfect matchings, and
@@ -284,7 +283,7 @@ If a different operating system is used, the steps on the build script are fairl
 self explanatory, the main issue would likely be finding the right packages
 for library dependencies.
 
-# Running scripts
+## Running scripts
 
 Run a Singular script using the supplied wrapper script
 ```
@@ -293,7 +292,7 @@ Run a Singular script using the supplied wrapper script
 this will show the results to the console while calculating,
 and also save the results to `out_whatever_script.txt`.
 
-# Generate your own scripts
+## Generate your own scripts
 
 `gen_constraints.py` will generate a Singular script that will calculate a Groebner basis.
 
